@@ -1,0 +1,58 @@
+body{
+margin:0px 0px 0px 0px ;	
+}
+#logo{
+	width:20px;
+	height:20px;
+	float:left;
+}
+#left{
+	
+	padding-right:10px;
+}
+#pic{
+	float:left;
+	width:70px;
+	height:80px;
+	padding-right:50px;
+	
+}
+#head{
+	float:left;
+	font-size:14px;
+}
+#bar_code{
+	
+	float:left;
+}
+#address_head{
+	float:left;
+	font-size:8px;
+	margin-left:65px;
+}
+#id{
+	font-size:13px;
+	margin-left:130px;
+}
+#content{
+	font-size:13px;
+	margin-left:100px;
+	margin-top:7px;
+}
+#foot{
+	font-size:13px;
+	float:left;
+	
+}
+#right{
+	width:50%;
+	float:right;
+}
+#address{
+	font-size:13px;
+	width:250px;
+}
+#rules{
+	font-size:13px;
+	width:325px;
+}

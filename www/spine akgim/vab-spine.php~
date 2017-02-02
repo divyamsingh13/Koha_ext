@@ -1,0 +1,86 @@
+
+<style>
+body{margin:0em;}
+.wid{
+	width:20em;
+	padding-bottom:3em;
+	text-align:center;}
+.leftmost{
+	text-align: center;
+	margin-left: 64px;
+	/*background: lightblue;*/
+	margin-right: 42px;
+	margin-top: 0;
+	padding-top: 0;
+	width: 163px;
+	height: 112px;
+	float: left;
+	}
+
+.margin-class{
+	
+}
+
+</style>
+
+<?php
+session_start();
+include "db.php";
+
+$r1=$_POST["r1"];
+$r2=$_POST["r2"];
+
+//echo "HELLO";
+	$f=1.0;
+	$query="SELECT  items.barcode,items.itemcallnumber,items.location FROM items LEFT JOIN biblioitems on (items.biblioitemnumber=biblioitems.biblioitemnumber) LEFT JOIN biblio on (biblioitems.biblionumber=biblio.biblionumber) where items.barcode>=$r1 and items.barcode<=$r2 " ;
+	$run=mysql_query($query);
+	if($run)
+	{
+	echo $run['items.location'];
+	
+	$c=1;
+
+	?>  
+	<!-- <table>
+	<tr> -->
+	<div style="height: 34px; width: 832px; background: ;"></div>
+	<div style="height: 1043px; width: 832px;">
+	<?php 
+	while($data=mysql_fetch_assoc($run))
+	{
+		$ref=$data['location'];
+		$call=$data['itemcallnumber'];
+		$call1=explode(" ", $call);
+		$bar=$data['barcode'];
+		//$author=$data['author_name']; 
+
+	
+		for($i=1; $i<100; $i++) {
+
+
+			if($c == ((30*$i) + 1) || $c == ((30*$i) + 2) || $c == ((30*$i) + 3)) { ?> 
+				<div class="leftmost margin-class"> <?php 
+				break;
+			} 
+			else {
+				?> 
+				<div class="leftmost"> <?php
+				break;
+
+			}
+		} ?>
+			<?php echo $ref;?>	<br>
+			<?php echo $call1[0];?>	<br>
+			<?php echo $call1[1];?><br>
+			<?php echo $bar;?>	<br>
+		</div>
+	<?php
+	if($c%3==0) echo "<br>"; 
+
+	$c++;
+	}
+	?> 
+	</div>
+	<?php
+	}
+?>
